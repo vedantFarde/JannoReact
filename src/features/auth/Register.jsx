@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import OTPBox from "./OTPBox";
 
-function Register() {
+function Register({ handleGlogin }) {
   const [showOTP, setShowOTP] = useState(false);
   const handleSignUp = () => {
     // API Call here
     // On success
     setShowOTP(true);
-  };
-  const [user, setUser] = useState();
-  const handleGlogin = () => {
-    window.open(`http://localhost:8000/auth/google/callback`, "_self");
   };
 
   return (

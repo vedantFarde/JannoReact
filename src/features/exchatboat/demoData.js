@@ -1,0 +1,58 @@
+const product = [
+  {
+    bot_id: "bot_1",
+    name: "Bot Alpha",
+    description: "Friendly chatbot",
+    status: "online",
+    version: "1.2.0",
+    language: "English",
+    created_at: "2024-03-12T12:30:00Z",
+  },
+  {
+    bot_id: "bot_2",
+    name: "Bot Beta",
+    description: "Technical support bot",
+    status: "offline",
+    version: "2.0.1",
+    language: "Spanish",
+    created_at: "2024-03-12T13:15:00Z",
+  },
+  {
+    bot_id: "bot_3",
+    name: "Bot Gamma",
+    description: "Entertainment bot",
+    status: "online",
+    version: "3.5.2",
+    language: "French",
+    created_at: "2024-03-12T14:00:00Z",
+  },
+  {
+    bot_id: "bot_4",
+    name: "Bot Delta",
+    description: "Customer service bot",
+    status: "online",
+    version: "1.0.0",
+    language: "German",
+    created_at: "2024-03-12T14:45:00Z",
+  },
+  {
+    bot_id: "bot_5",
+    name: "Bot Epsilon",
+    description: "Healthcare bot",
+    status: "offline",
+    version: "2.3.1",
+    language: "Italian",
+    created_at: "2024-03-12T15:30:00Z",
+  },
+  {
+    bot_id: "bot_6",
+    name: "Bot Zeta",
+    description: "Finance bot",
+    status: "online",
+    version: "1.5.0",
+    language: "Russian",
+    created_at: "2024-03-12T16:15:00Z",
+  },
+];
+
+export default product;

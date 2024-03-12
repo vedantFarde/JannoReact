@@ -1,19 +1,15 @@
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 const navigation = [
-  { name: "Demo", href: "/demo", current: false },
-  { name: "Pricing", href: "#pricing", current: false },
-  { name: "Featured Chatbots", href: "#featured", current: false },
-  { name: "FAQ", href: "#faq", current: false },
+  { name: "Crate New Bot", href: "/createNewBot", current: false },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+export default function Navbar1() {
   return (
     <Disclosure as="nav" className="bg-slate-50 sticky top-0 z-10 ">
       {({ open }) => (
@@ -61,16 +57,11 @@ export default function Navbar() {
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="absolute flex flex-wrap gap-x-1 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <Link
-                    to="/login"
+                  <button
+                    type="button"
                     className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
-                    Log in
-                  </Link>
-                  <Link
-                    to="/signup"
-                    className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
-                    Sign up
-                  </Link>
+                    Log out
+                  </button>
                 </div>
               </div>
             </div>
@@ -96,16 +87,11 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="flex flex-row item-center w-full gap-1">
-                <Link
-                  to="/login"
+                <button
+                  type="/button"
                   className="bg-black flex items-center justify-center text-white w-1/2 px-4 rounded-md py-2 hover:bg-white hover:text-black">
-                  <span>Log in</span>
-                </Link>
-                <Link
-                  to="/signup"
-                  className="bg-black flex items-center justify-center text-white w-1/2 px-4 rounded-md py-2 hover:bg-white hover:text-black">
-                  <span>Sign up</span>
-                </Link>
+                  <span>Log Out</span>
+                </button>
               </div>
             </div>
           </Disclosure.Panel>

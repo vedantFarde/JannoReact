@@ -45,7 +45,7 @@ const faqData = [
 
 function Faq() {
   return (
-    <section className="flex w-full m-y-10">
+    <section className="flex w-full m-y-10" id="faq">
       <div className="flex w-full sm:flex-row gap-2 items-center justify-center flex-col">
         <div className="flex flex-col flex-wrap items-center md:w-1/2 w-11/12">
           <h2 className="mt-5 text-xl text-slate-700 md:text-3xl">
@@ -58,7 +58,7 @@ function Faq() {
             </a>
           </h6>
         </div>
-        <div class="md:w-1/2 w-11/12 mx-auto mt-8 grid max-w-xl divide-y divide-neutral-200">
+        <div className="md:w-1/2 w-11/12 mx-auto mt-8 grid max-w-xl divide-y divide-neutral-200">
           {faqData.map((ele, index) => (
             <div key={index}>
               <FaqCard ele={ele} />

@@ -72,13 +72,15 @@ const pricingList = [
 
 function Pricing() {
   return (
-    <section className=" flex flex-col bg-gray-100 " id="pricing">
-      <div className="mt-20 mb-10">
+    <section
+      className=" flex flex-col bg-gradient-to-t from-gray-50 to-slate-800"
+      id="pricing">
+      <div className="mt-10 mb-10 p-2 md:p-10">
         <div className="max-w-screen-md mx-auto mb-8 text-center lg:mb-12">
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
             Designed for business teams like yours
           </h2>
-          <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+          <p className="mb-5 font-light text-gray-300 sm:text-xl dark:text-gray-400">
             Here at <strong>JONNA</strong> we concentrate on markets where
             technology, innovation, and capital can unleash long-term value and
             propel advancements in the bot creation industry.

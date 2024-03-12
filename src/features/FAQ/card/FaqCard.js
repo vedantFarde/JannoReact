@@ -2,11 +2,11 @@ import React from "react";
 
 function FaqCard({ ele }) {
   return (
-    <div class="py-5">
-      <details class="group">
-        <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
+    <div className="py-5">
+      <details className="group">
+        <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
           <span> {ele.question}</span>
-          <span class="transition group-open:rotate-180">
+          <span className="transition group-open:rotate-180">
             <svg
               fill="none"
               height="24"
@@ -21,7 +21,7 @@ function FaqCard({ ele }) {
             </svg>
           </span>
         </summary>
-        <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
+        <p className="group-open:animate-fadeIn mt-3 text-neutral-600">
           {ele.answer}
         </p>
       </details>

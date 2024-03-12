@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-function Sign() {
-  const [user, setUser] = useState();
-  const handleGlogin = () => {
-    window.open(`http://localhost:8000/auth/google/callback`, "_self");
-  };
-
+function Sign({ handleGlogin }) {
   return (
     <section>
       <div className="flex flex-col justify-center items-center px-6 mx-auto lg:py-0">
