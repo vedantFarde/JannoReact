@@ -13,7 +13,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+export default function Navbar({ Cuser }) {
   return (
     <Disclosure as="nav" className="bg-slate-50 sticky top-0 z-10 ">
       {({ open }) => (
@@ -60,18 +60,28 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:block">
-                <div className="absolute flex flex-wrap gap-x-1 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <Link
-                    to="/login"
-                    className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
-                    Log in
-                  </Link>
-                  <Link
-                    to="/signup"
-                    className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
-                    Sign up
-                  </Link>
-                </div>
+                {!Cuser ? (
+                  <div className="absolute flex flex-wrap gap-x-1 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <Link
+                      to="/login"
+                      className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
+                      Log in
+                    </Link>
+                    <Link
+                      to="/signup"
+                      className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
+                      Sign up
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="absolute flex flex-wrap gap-x-1 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <Link
+                      to="/dashboard"
+                      className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
+                      Dashboard
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>

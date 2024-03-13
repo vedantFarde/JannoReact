@@ -9,7 +9,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar1() {
+export default function Navbar1({ handelLogOut }) {
   return (
     <Disclosure as="nav" className="bg-slate-50 sticky top-0 z-10 ">
       {({ open }) => (
@@ -59,6 +59,7 @@ export default function Navbar1() {
                 <div className="absolute flex flex-wrap gap-x-1 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <button
                     type="button"
+                    onClick={handelLogOut}
                     className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
                     Log out
                   </button>
@@ -89,6 +90,7 @@ export default function Navbar1() {
               <div className="flex flex-row item-center w-full gap-1">
                 <button
                   type="/button"
+                  onClick={handelLogOut}
                   className="bg-black flex items-center justify-center text-white w-1/2 px-4 rounded-md py-2 hover:bg-white hover:text-black">
                   <span>Log Out</span>
                 </button>

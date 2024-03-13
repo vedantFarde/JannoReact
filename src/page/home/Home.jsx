@@ -4,10 +4,10 @@ import Pricing from "../../features/pricing/Pricing";
 import Faq from "../../features/FAQ/Faq";
 import ExChatBot from "../../features/exchatboat/ExChatBot";
 
-function Home() {
+function Home({ Cuser }) {
   return (
     <>
-      <Navbar />
+      <Navbar Cuser={Cuser} />
       <Pricing />
       <ExChatBot />
       <Faq />
