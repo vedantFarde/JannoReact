@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 const navigation = [
   { name: "Demo", href: "/demo", current: false },
@@ -105,18 +105,26 @@ export default function Navbar({ Cuser }) {
                   </Disclosure.Button>
                 ))}
               </div>
-              <div className="flex flex-row item-center w-full gap-1">
+              {!Cuser ? (
+                <div className="flex flex-row item-center w-full gap-1">
+                  <Link
+                    to="/login"
+                    className="bg-black flex items-center justify-center text-white w-1/2 px-4 rounded-md py-2 hover:bg-white hover:text-black">
+                    <span>Log in</span>
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="bg-black flex items-center justify-center text-white w-1/2 px-4 rounded-md py-2 hover:bg-white hover:text-black">
+                    <span>Sign up</span>
+                  </Link>
+                </div>
+              ) : (
                 <Link
-                  to="/login"
-                  className="bg-black flex items-center justify-center text-white w-1/2 px-4 rounded-md py-2 hover:bg-white hover:text-black">
-                  <span>Log in</span>
+                  to="/dashboard"
+                  className="bg-black flex items-center text-white w-1/2 justify-center items-center px-4 rounded-md py-2 hover:bg-white hover:text-black">
+                  <span>Dashboard</span>
                 </Link>
-                <Link
-                  to="/signup"
-                  className="bg-black flex items-center justify-center text-white w-1/2 px-4 rounded-md py-2 hover:bg-white hover:text-black">
-                  <span>Sign up</span>
-                </Link>
-              </div>
+              )}
             </div>
           </Disclosure.Panel>
         </>

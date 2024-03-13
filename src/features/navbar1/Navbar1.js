@@ -2,6 +2,11 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 const navigation = [
+  {
+    name: "Dashboard",
+    href: "/dashboard",
+    current: false,
+  },
   { name: "Crate New Bot", href: "/createNewBot", current: false },
 ];
 
@@ -38,18 +43,19 @@ export default function Navbar1({ handelLogOut }) {
                   <div className="flex space-x-4">
                     <>
                       {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? "bg-gray-900 text-black"
-                              : "text-black hover:bg-gray-700 hover:text-white",
-                            "rounded-md px-3 py-2 text-sm font-medium"
-                          )}
-                          aria-current={item.current ? "page" : undefined}>
-                          {item.name}
-                        </a>
+                        <div key={item.name}>
+                          <Link
+                            to={item.href}
+                            className={classNames(
+                              item.current
+                                ? "bg-gray-900 text-black"
+                                : "text-black hover:bg-gray-700 hover:text-white",
+                              "rounded-md px-3 py-2 text-sm font-medium"
+                            )}
+                            aria-current={item.current ? "page" : undefined}>
+                            {item.name}
+                          </Link>
+                        </div>
                       ))}
                     </>
                   </div>

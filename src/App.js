@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Home from "./page/home/Home";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./page/login/Login";
 import Signup from "./page/signup/Signup";
 import Dashboard from "./page/dashboard/Dashboard";
 import CreateBot from "./page/createBot/CreateBot";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuthUser, setCurrentUser } from "./features/auth/authSlice";
+import {
+  setAuthUser,
+  setCurrentUser,
+  setIsAuthenticated,
+} from "./features/auth/authSlice";
+import PrivateRoute from "./utility/PrivateRoute";
 
 function App() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.authUser);
   const Cuser = useSelector((state) => state.auth.currentUser);
-  console.log(Cuser);
-
-  useEffect(() => {
-    if (Cuser) {
-      navigate("/dashboard");
-    }
-  }, [Cuser]);
+  const authenticate = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
     const getUser = () => {
@@ -50,17 +48,29 @@ function App() {
   useEffect(() => {
     if (user) {
       dispatch(setCurrentUser(user));
+      dispatch(setIsAuthenticated(true));
     }
-  }, [user, dispatch]);
+  }, [user]);
+  console.log(authenticate);
 
   return (
     <>
       <Routes>
+        <Route element={<PrivateRoute authenticate={authenticate} />}>
+          <Route path="/dashboard" element={<Dashboard Cuser={Cuser} />} />
+          <Route path="/createNewBot" element={<CreateBot />} />
+        </Route>
+        {authenticate && (
+          <Route path="/dashboard" element={<Dashboard Cuser={Cuser} />} />
+        )}
+        {authenticate && <Route path="/createNewBot" element={<CreateBot />} />}
+
         <Route path="/" element={<Home Cuser={Cuser} />} />
-        <Route path="/dashboard" element={<Dashboard Cuser={Cuser} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/createNewBot" element={<CreateBot />} />
+
+        {/* <Route path="/dashboard" element={<Dashboard Cuser={Cuser} />} /> */}
+        {/* <Route path="/createNewBot" element={<CreateBot />} /> */}
       </Routes>
     </>
   );
