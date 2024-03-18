@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Dependency directories
+pids
+logs
+results
+
+# Local development files
+*.swp
+.DS_Store
+.idea/
+.vscode/
+
+# Build files
+dist/
+
+# Config files
+config.js
