@@ -43,12 +43,6 @@ function Templete() {
         <div>{type === "Files" && <Fileuplode />}</div>
         <div>{type === "Website" && <Weblink />}</div>
       </div>
-      <button
-        type="button"
-        className="md:w-1/2 bg-black w-11/12 p-3 rounded-xl mt-[-20px] text-white font-black  hover:bg-slate-700	
-      ">
-        Create Bot
-      </button>
     </div>
   );
 }

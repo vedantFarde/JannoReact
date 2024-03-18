@@ -4,6 +4,7 @@ const initialState = {
   isAuthenticated: false,
   authUser: null,
   currentUser: null,
+  manualAuth: false,
 };
 export const authSlice = createSlice({
   name: "auth",
@@ -18,9 +19,16 @@ export const authSlice = createSlice({
     setCurrentUser: (state, action) => {
       state.currentUser = action.payload;
     },
+    setIsmanualAuth: (state, action) => {
+      state.manualAuth = action.payload;
+    },
   },
 });
 
-export const { setIsAuthenticated, setAuthUser, setCurrentUser } =
-  authSlice.actions;
+export const {
+  setIsAuthenticated,
+  setIsmanualAuth,
+  setAuthUser,
+  setCurrentUser,
+} = authSlice.actions;
 export default authSlice.reducer;

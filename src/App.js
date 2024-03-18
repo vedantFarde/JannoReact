@@ -10,6 +10,7 @@ import {
   setAuthUser,
   setCurrentUser,
   setIsAuthenticated,
+  manualAuth,
 } from "./features/auth/authSlice";
 import PrivateRoute from "./utility/PrivateRoute";
 
@@ -18,32 +19,36 @@ function App() {
   const user = useSelector((state) => state.auth.authUser);
   const Cuser = useSelector((state) => state.auth.currentUser);
   const authenticate = useSelector((state) => state.auth.isAuthenticated);
+  const manualAuth = useSelector((state) => state.auth.manualAuth);
+
+  const getUser = () => {
+    const url = `http://localhost:8000/auth/login/success`;
+    fetch(url, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        throw new Error("authentication has been failed!");
+      })
+      .then((resObject) => {
+        dispatch(setAuthUser(resObject.user.user));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
-    const getUser = () => {
-      const url = `http://localhost:8000/auth/login/success`;
-      fetch(url, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw new Error("authentication has been failed!");
-        })
-        .then((resObject) => {
-          dispatch(setAuthUser(resObject.user.user));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getUser();
-  }, [dispatch]); /// get userdata after goole login
+    if (manualAuth === false) {
+      getUser();
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     if (user) {
@@ -51,8 +56,8 @@ function App() {
       dispatch(setIsAuthenticated(true));
     }
   }, [user]);
-  console.log(authenticate);
 
+  console.log(authenticate);
   return (
     <>
       <Routes>
@@ -68,9 +73,6 @@ function App() {
         <Route path="/" element={<Home Cuser={Cuser} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
-        {/* <Route path="/dashboard" element={<Dashboard Cuser={Cuser} />} /> */}
-        {/* <Route path="/createNewBot" element={<CreateBot />} /> */}
       </Routes>
     </>
   );
