@@ -13,7 +13,7 @@ authUtility.isAuthenticated = async (req, res, next) => {
       .json({ error: true, msg: "Refresh token missing or expired" });
   }
 
-  const accessToken = req.cookies.accessToken;
+  let accessToken = req.cookies.accessToken;
   if (!accessToken || authUtility.isTokenExpired(accessToken)) {
     try {
       const newAccessToken = await authUtility.refreshAccessToken(refreshToken);
@@ -35,7 +35,8 @@ authUtility.isAuthenticated = async (req, res, next) => {
     }
   }
 
-  const profile = decodeToken(refreshToken);
+  accessToken = req.cookies.accessToken;
+  const profile = decodeToken(accessToken);
   console.log(profile);
   req.user = profile;
   next();
