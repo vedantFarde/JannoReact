@@ -7,6 +7,11 @@ const navigation = [
     href: "/dashboard",
     current: false,
   },
+  {
+    name: "Dashboard1",
+    href: "/newdashboard",
+    current: false,
+  },
   { name: "Crate New Bot", href: "/createNewBot", current: false },
 ];
 

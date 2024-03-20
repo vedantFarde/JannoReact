@@ -10,9 +10,9 @@ import {
   setAuthUser,
   setCurrentUser,
   setIsAuthenticated,
-  manualAuth,
 } from "./features/auth/authSlice";
 import PrivateRoute from "./utility/PrivateRoute";
+import Dashboard1 from "./page/dashboard1/Dashboard1";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,13 +63,13 @@ function App() {
       <Routes>
         <Route element={<PrivateRoute authenticate={authenticate} />}>
           <Route path="/dashboard" element={<Dashboard Cuser={Cuser} />} />
+          <Route path="/newdashboard" element={<Dashboard1 Cuser={Cuser} />} />
           <Route path="/createNewBot" element={<CreateBot />} />
         </Route>
         {authenticate && (
           <Route path="/dashboard" element={<Dashboard Cuser={Cuser} />} />
         )}
         {authenticate && <Route path="/createNewBot" element={<CreateBot />} />}
-
         <Route path="/" element={<Home Cuser={Cuser} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

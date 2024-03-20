@@ -7,14 +7,17 @@ import {
   setIsAuthenticated,
 } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import Preview from "./Preview";
-import Mainn from "./Mainn";
+import Preview from "./pageComponand/Preview";
+import Mainn from "./pageComponand/Mainn";
+import Sidebar from "./pageComponand/Sidebar";
 
-function Dashboard({ Cuser }) {
+function Dashboard1() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [preview, setPreview] = useState(null);
+
+  const [type, setType] = useState("all");
 
   const handelLogOut = () => {
     dispatch(setCurrentUser(null));
@@ -22,7 +25,6 @@ function Dashboard({ Cuser }) {
     dispatch(setIsAuthenticated(false));
     navigate("/");
   };
-
   const getRelatedData = async () => {
     const uri = "http://localhost:8000/v1/getdoc";
     try {
@@ -43,8 +45,8 @@ function Dashboard({ Cuser }) {
   console.log(data);
 
   useEffect(() => {
-    getRelatedData();
-  }, []);
+    if (type === "all") getRelatedData();
+  }, [type]);
 
   const handelPreview = async (file) => {
     const uri = "http://localhost:8000/v1/getpreview";
@@ -128,21 +130,19 @@ function Dashboard({ Cuser }) {
       <div>
         <Navbar1 handelLogOut={handelLogOut} />
       </div>
-      <div className="flex flex-row w-full h-full">
+      <div className="flex h-full w-full gap-5 p-10 ">
+        <Sidebar setType={setType} />
         <Mainn
           data={data}
+          handelRemove={handelRemove}
           handelPreview={handelPreview}
           handeldownload={handeldownload}
-          handelRemove={handelRemove}
+          type={type}
         />
-        <Preview
-          windowWidth={windowWidth}
-          preview={preview}
-          setPreview={setPreview}
-        />
+        <Preview />
       </div>
     </div>
   );
 }
 
-export default Dashboard;
+export default Dashboard1;

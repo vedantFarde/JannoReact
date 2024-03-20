@@ -5,8 +5,6 @@ function FileUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const [isHighlighted, setIsHighlighted] = useState(false);
-
   const handleFileUpload = (event) => {
     const files = event.target.files;
     if (files && files.length > 0) {
@@ -75,6 +73,8 @@ function FileUpload() {
     const res = await fetch("http://localhost:8000/v1/uplodpdf", option);
     const data = await res.json();
     const uploadUrl = await data?.url;
+
+    console.log(uploadUrl);
 
     const optionUpload = {
       method: "PUT",
