@@ -129,13 +129,13 @@ uplodControlers.DeleteDoc = async (req, res) => {
 
   deleteObject();
 };
+
 uplodControlers.getpreview = async (req, res) => {
   const { key } = req.body;
   try {
     const command = new GetObjectCommand({
       Bucket: bucketName,
       Key: key,
-      Expires: 1800,
     });
     const url = await getSignedUrl(s3Client, command);
     res.status(200).json({ err: false, data: url });
