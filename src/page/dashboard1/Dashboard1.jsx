@@ -16,6 +16,7 @@ function Dashboard1() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [preview, setPreview] = useState(null);
+  const [active, setActive] = useState(false);
 
   const [type, setType] = useState("all");
 
@@ -130,16 +131,28 @@ function Dashboard1() {
       <div>
         <Navbar1 handelLogOut={handelLogOut} />
       </div>
-      <div className="flex h-full w-full gap-5 p-10 ">
-        <Sidebar setType={setType} />
+      <div className="flex h-full w-full gap-5 md:p-10 p-4 ">
+        <Sidebar
+          setType={setType}
+          active={active}
+          windowWidth={windowWidth}
+          setActive={setActive}
+        />
         <Mainn
           data={data}
           handelRemove={handelRemove}
           handelPreview={handelPreview}
           handeldownload={handeldownload}
+          windowWidth={windowWidth}
           type={type}
+          active={active}
+          setActive={setActive}
         />
-        <Preview />
+        <Preview
+          windowWidth={windowWidth}
+          preview={preview}
+          setPreview={setPreview}
+        />
       </div>
     </div>
   );
