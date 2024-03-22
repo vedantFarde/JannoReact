@@ -6,7 +6,7 @@ function Textdata() {
   const [loading, setLoading] = useState(false);
   const handeltextDoc = async () => {
     const senddata = {
-      filename: `${name}.text`,
+      filename: `${name}.txt`,
       type: "text",
     };
 

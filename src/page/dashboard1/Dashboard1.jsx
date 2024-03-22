@@ -102,7 +102,8 @@ function Dashboard1() {
       });
       const dataDa = await res.json();
       const temp = document.createElement("a");
-      temp.href = dataDa.data;
+      temp.href = dataDa?.data;
+      // temp.setAttribute("download", file.split("/")[2]);
       temp.download = file.split("/")[2];
       temp.target = "_blank";
       temp.rel = "noreferrer";

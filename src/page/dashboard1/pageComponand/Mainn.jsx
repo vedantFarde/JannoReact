@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import pdf from "../../../features/dataInputs/pdf.svg";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 function Mainn({
   handelPreview,
   handeldownload,
