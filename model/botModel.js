@@ -18,13 +18,16 @@ const botSchema = new mongoose.Schema({
   version: {
     type: String,
   },
-  createdBy: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Group",
-    },
-  ],
-
+  // createdBy: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Group",
+  //   },
+  // ],
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -8,5 +8,6 @@ uplodRoutes.get("/getdoc", isAuthenticated, uplodControlers.getdoc);
 uplodRoutes.put("/uplodtext", isAuthenticated, uplodControlers.uplodtext);
 uplodRoutes.post("/getpreview", isAuthenticated, uplodControlers.getpreview);
 uplodRoutes.post("/getdelete", isAuthenticated, uplodControlers.DeleteDoc);
+uplodRoutes.put("/uplodurl", isAuthenticated, uplodControlers.uplodurl);
 
 module.exports = uplodRoutes;

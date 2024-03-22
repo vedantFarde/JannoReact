@@ -19,7 +19,7 @@ authUtility.isAuthenticated = async (req, res, next) => {
       const newAccessToken = await authUtility.refreshAccessToken(refreshToken);
       if (newAccessToken) {
         res.cookie("accessToken", newAccessToken, {
-          maxAge: 15 * 60 * 1000,
+          maxAge: 60 * 1000,
           httpOnly: true,
         });
       } else {

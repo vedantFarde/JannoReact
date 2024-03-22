@@ -39,11 +39,13 @@ router.post(
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      maxAge: 15 * 60 * 1000,
+      secure: true,
+      maxAge: 60 * 1000,
     });
 
     res.json({

@@ -111,18 +111,13 @@ module.exports = function (passport) {
 };
 
 function generateTokens(user) {
-  const tokenOptions = { expiresIn: "15m" };
-  const refreshTokenOptions = { expiresIn: "1d" };
-
   const accessToken = jwt.sign(
     { userId: user.userId, email: user.email },
-    process.env.JWT_SEC,
-    tokenOptions
+    process.env.JWT_SEC
   );
   const refreshToken = jwt.sign(
     { userId: user.userId, email: user.email },
-    process.env.JWT_SEC,
-    refreshTokenOptions
+    process.env.JWT_SEC
   );
 
   return { accessToken, refreshToken };

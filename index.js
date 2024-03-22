@@ -8,6 +8,7 @@ const authRouter = require("./router/auth");
 const DBConnection = require("./utility/MongoDbConnect");
 const userRoutes = require("./router/manualauth");
 const uplodRoutes = require("./router/uplodRoutes");
+const botRouter = require("./router/botRouter");
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -44,6 +45,7 @@ passportSetup(passport);
 app.use("/auth", authRouter);
 app.use("/auth", userRoutes);
 app.use("/v1", uplodRoutes);
+app.use("/v1", botRouter);
 
 const PORT = 8000;
 app.listen(PORT, () => {
