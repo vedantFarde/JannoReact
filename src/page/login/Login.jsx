@@ -50,7 +50,7 @@ function Login() {
         dispatch(setAuthUser(data.user.user));
         dispatch(setCurrentUser(data.user.user));
         dispatch(setIsmanualAuth(true));
-        navigate("/dashboard");
+        navigate("/newdashboard");
       }
     } catch (err) {
       console.log(err);

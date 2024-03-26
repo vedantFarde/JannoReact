@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Navbar1 from "../../features/navbar1/Navbar1";
 import { useDispatch } from "react-redux";
-import {
-  setAuthUser,
-  setCurrentUser,
-  setIsAuthenticated,
-} from "../../features/auth/authSlice";
+
 import { useNavigate } from "react-router-dom";
 import Preview from "./pageComponand/Preview";
 import Mainn from "./pageComponand/Mainn";
 import Sidebar from "./pageComponand/Sidebar";
 
-function Dashboard1() {
+function Dashboard1({ handelLogOut }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -20,12 +16,6 @@ function Dashboard1() {
 
   const [type, setType] = useState("all");
 
-  const handelLogOut = () => {
-    dispatch(setCurrentUser(null));
-    dispatch(setAuthUser(null));
-    dispatch(setIsAuthenticated(false));
-    navigate("/");
-  };
   const getRelatedData = async () => {
     const uri = "http://localhost:8000/v1/getdoc";
     try {

@@ -4,15 +4,16 @@ import { Link } from "react-router-dom";
 const navigation = [
   {
     name: "Dashboard",
-    href: "/dashboard",
-    current: false,
-  },
-  {
-    name: "Dashboard1",
     href: "/newdashboard",
     current: false,
   },
-  { name: "Crate New Bot", href: "/createNewBot", current: false },
+  {
+    name: "newDashboard",
+    href: "/dashboard",
+    current: false,
+  },
+  { name: "Upload Documents", href: "/uploadDocuments", current: false },
+  { name: "Create New Bot", href: "/createNewBot", current: false },
 ];
 
 function classNames(...classes) {

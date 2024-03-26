@@ -9,15 +9,10 @@ import {
 } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 
-function CreateBot() {
+function UploadDocuments({ handelLogOut }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handelLogOut = () => {
-    dispatch(setCurrentUser(null));
-    dispatch(setAuthUser(null));
-    dispatch(setIsAuthenticated(false));
-    navigate("/");
-  };
+
   const [active, setActive] = useState("main");
   return (
     <div>
@@ -27,4 +22,4 @@ function CreateBot() {
   );
 }
 
-export default CreateBot;
+export default UploadDocuments;

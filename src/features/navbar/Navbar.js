@@ -76,7 +76,7 @@ export default function Navbar({ Cuser }) {
                 ) : (
                   <div className="absolute flex flex-wrap gap-x-1 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <Link
-                      to="/dashboard"
+                      to="/newdashboard"
                       className="bg-black flex items-center text-white px-4 rounded-md py-2 hover:bg-white hover:text-black">
                       Dashboard
                     </Link>
