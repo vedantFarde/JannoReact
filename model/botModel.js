@@ -24,6 +24,12 @@ const botSchema = new mongoose.Schema({
   //     ref: "Group",
   //   },
   // ],
+  resources: [
+    {
+      type: String,
+      unique: true,
+    },
+  ],
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
